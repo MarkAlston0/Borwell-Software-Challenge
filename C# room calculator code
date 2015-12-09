@@ -1,0 +1,106 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+///Room Calculator Build 1.0
+///8th December 2015 Mark Alston
+namespace Borwell_Software_Challenge
+{
+    class Program
+    {
+        static int roomArea()
+        {
+            ///The function for calculating the area of the room
+            Console.WriteLine("\nPlease insert the length of your room in feet:");
+            int ilength = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\nAnd the width of your room in feet:");
+            int iwidth = Convert.ToInt32(Console.ReadLine());          
+            return iwidth * ilength;
+        }
+        static double roomPaint()
+        {
+            ///The function for calculating the amount of paint needed for the walls 
+            Console.WriteLine("\nPlease insert the length of each wall of your room in feet:");
+            Console.WriteLine("\nWall 1:");
+            int iwallLength1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\nWall 2:");
+            int iwallLength2 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\nWall 3:");
+            int iwallLength3 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\nWall 4:");
+            int iwallLength4 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\nAnd the height of your room in feet:");
+            int iheight = Convert.ToInt32(Console.ReadLine());
+            return ((iwallLength1 + iwallLength2 + iwallLength3 + iwallLength4) * iheight)/350.0;
+                
+        }
+        static int roomVolume()
+        {
+            ///The function for calculating the volume of the room
+            Console.WriteLine("\nPlease insert the height of your room in feet:");
+            int iheight = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\nThe length of your room in feet:");
+            int ifeet = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\nAnd the width of your room in feet:");
+            int iwidth = Convert.ToInt32(Console.ReadLine());
+            ///Ensuring no negative numbers are inputted
+            if ((iwidth < 0) || (ifeet < 0) || (iheight < 0))
+            {
+                Console.WriteLine("You cant put in a negative number.");
+                return 0;
+            }
+            return iheight * ifeet * iwidth;
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Welcome to the Room Calculator!\n");
+            System.Threading.Thread.Sleep(1400);
+            ///A boolean variable so you can loop back to the menu once you have found out one of the calculations
+            ///so you dont need to restart the code to calculate all of the values
+            bool bmenu = true;
+            while (bmenu == true)
+            {
+                ///Displaying the menu for the user to select their option
+                ///Lots of "\n" to space out the menu and make it easier for the user to understand and read
+                Console.WriteLine("\nPlease select an option to calculate the;\n 1. Area of the floor. \n 2. Amount of paint required to paint the walls. \n 3. Volume of the room. \n 4. Quit.\n");
+                int ioption = Convert.ToInt32(Console.ReadLine());
+                switch (ioption)
+                {
+                    case 1:
+                        ///Calling the function "roomArea" and storing it as the "iarea" variable
+                        ///to keep my code clean and simple
+                        int iarea = roomArea();
+                        System.Threading.Thread.Sleep(1400);
+                        Console.WriteLine("\nThe area of your room is: " + iarea + " square feet.");
+                        ///"Sleeps" are added so the user isn't bombarded with new information
+                        System.Threading.Thread.Sleep(2000);
+                        break;
+                    case 2:
+                        double ipaintAmount = roomPaint();
+                        System.Threading.Thread.Sleep(1400);
+                        ///The "ipaintAmount" variable outputs a very long decimal number because I cannot find a way to round up
+                        Console.WriteLine("\nYou will need " + ipaintAmount + " gallon/s of paint for your room.");
+                        System.Threading.Thread.Sleep(2000);
+                        break;
+                    case 3:
+                        int ivolume = roomVolume();
+                        System.Threading.Thread.Sleep(1400);
+                        Console.WriteLine("\nThe volume of your room is: " + ivolume + " cubed feet.");
+                        System.Threading.Thread.Sleep(2000);
+                        break;
+                    case 4:
+                        Console.WriteLine("\nThank you for using the Room Calculator!");
+                        System.Threading.Thread.Sleep(3000);
+                        bmenu = false;
+                        break;
+                    ///Ensuring that if the user inputs a number not on the menu they will be told so and looped back
+                    default:
+                        Console.WriteLine("\nThat number isn't on the menu.");
+                        System.Threading.Thread.Sleep(1400);
+                        break;
+                }
+            }
+        }
+    }
+}
