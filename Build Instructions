@@ -1,0 +1,3 @@
+The C# code that I have published takes the dimensions of the room (in feet) as the input and outputs the area of the floor, the amount of paint required to paint the walls and the volume of the room. 
+Currently this code only caters for rooms with 4 walls. To accomidate more new algorithms would need to be created and additional information inputted about the shape of the room.
+To compile and run this code you will need to paste it into a Microsoft Visual Studios application that has the "Console Application" template selected. Then just press F5 on the keyboard to run it.
